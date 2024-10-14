@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Student Detail</title>
+    <link rel="stylesheet" href="{% static 'css/add_study.css' %}" />
+  </head>
+  <body>
+    <div class="main_div">
+      <h1>Add Student Detail</h1>
+      {% if messages %}
+      <ul id="message-list" style="list-style-type: none">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form method="POST">
+        {% csrf_token %}
+        <div>
+          <label for="name">Name:</label>
+          <div><input type="text" name="name" id="name" required /></div>
+        </div>
+
+        <div>
+          <label for="phase">Phase:</label>
+          <div>
+            <select name="phase" id="phase" required>
+              <option value="Phase I" selected>Phase I</option>
+              <option value="Phase II">Phase II</option>
+              <option value="Phase III">Phase III</option>
+              <option value="Phase IV">Phase IV</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="sponsor">Sponsor:</label>
+          <div><input type="text" name="sponsor" id="sponsor" required /></div>
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <div>
+            <textarea name="description" id="description" required></textarea>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <button type="submit">Save Student Detail</button>
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="{% static 'js/script.js' %}"></script>
+</html>

@@ -1,0 +1,74 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/pexels-pixabay-207692.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+body h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  margin-top: 0;
+  padding-top: 2rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+th {
+  background-color: #eaeaea;
+}
+tr {
+  background-color: white;
+}
+tr:nth-child(even) {
+  background-color: #eaeaea; /* Light grey for even rows */
+}
+a {
+  text-decoration: none;
+}
+form {
+  padding: 0 2rem;
+}
+form div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+td a {
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  color: blue;
+}
+form div a {
+  padding: 10px 15px;
+  background-color: #58a9ff;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+}
+form div button {
+  padding: 10px 15px;
+  background-color: #c7253e;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  width: 150px;
+  border: none;
+}
+#message-list {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: aliceblue;
+  font-size: larger;
+}

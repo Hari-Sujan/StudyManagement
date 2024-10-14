@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+    <link rel="stylesheet" href="{% static 'css/study_list.css' %}">
+  </head>
+  <body>
+    <h1 style="text-align: center">Student Details</h1>
+    <!-- Show messages (for success or errors) -->
+      {% if messages %}
+      <ul id="message-list" style="list-style-type: none;">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+    <form method="post" action="{% url 'delete_selected_studies' %}">
+      {% csrf_token %}
+      <table>
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Student Name</th>
+            <th>Phase</th>
+            <th>Sponsor</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for study in studies %}
+          <tr>
+            <td>
+              <input type="checkbox" name="study_ids" value="{{ study.id }}" />
+            </td>
+            <td>{{ study.name }}</td>
+            <td>{{ study.phase }}</td>
+            <td>{{ study.sponsor }}</td>
+            <td>{{ study.description }}</td>
+            <td>
+              <a href="{% url 'study_detail' study.id %}">View</a> |
+              <a href="{% url 'edit_study' study.id %}">Edit</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6">No student found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div>
+        <!-- Button to add a new study -->
+        <a href="{% url 'add_study' %}">Add New Student</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <!-- Button to delete selected studies -->
+        <button type="submit">Delete Student</button>
+      </div>
+    </form>
+  </body>
+  <script src="{% static 'js/script.js' %}"></script>
+</html>

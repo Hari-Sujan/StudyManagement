@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Student Detail</title>
+    <link rel="stylesheet" href="{% static 'css/edit_study.css' %}">
+  </head>
+  <body>
+    <div class="main_div">
+      <h1>Edit Student Detail</h1>
+
+      {% if messages %}
+      <ul id="message-list" style="list-style-type: none">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form method="POST">
+        {% csrf_token %}
+
+        <div>
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value="{{ study.name }}"
+            required
+          />
+        </div>
+        <div>
+          <label for="phase">Phase:</label>
+          <select name="phase" id="phase" required>
+            <option value="Phase I" {% if study.phase == "Phase I" %}selected{% endif %}>Phase I</option>
+            <option value="Phase II" {% if study.phase == "Phase II" %}selected{% endif %}>Phase II</option>
+            <option value="Phase III" {% if study.phase == "Phase III" %}selected{% endif %}>Phase III</option>
+            <option value="Phase IV" {% if study.phase == "Phase IV" %}selected{% endif %}>Phase IV</option>
+          </select>
+        </div>
+        <div>
+          <label for="sponsor">Sponsor:</label>
+          <input
+            type="text"
+            name="sponsor"
+            id="sponsor"
+            value="{{ study.sponsor }}"
+            required
+          />
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <textarea name="description" id="description" required>
+{{ study.description }}</textarea
+          >
+        </div>
+        <div style="display: flex; justify-content: center">
+          <button type="submit">Update Student Detail</button>
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="{% static 'js/script.js' %}"></script>
+</html>
